@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Button from "./common/Button";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
 export const TableBooks = () => {
   const [books, setBooks] = useState([]); // State untuk menyimpan data buku
@@ -11,7 +12,7 @@ export const TableBooks = () => {
   useEffect(() => {
     const getBooks = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/books"); // Pastikan endpoint sesuai
+        const res = await axios.get(`${API_BASE_URL}/books`);
         setBooks(res.data);
       } catch (error) {
         console.error("Failed to fetch books:", error);
@@ -26,7 +27,7 @@ export const TableBooks = () => {
     setBooks((prevBooks) => prevBooks.filter((book) => book.id_buku !== bookId));
 
     try {
-      await axios.delete(`http://localhost:8000/books/${bookId}`);
+      await axios.delete(`${API_BASE_URL}/books/${bookId}`);
     } catch (error) {
       console.error("Failed to delete book:", error);
       // Kembalikan state jika API gagal

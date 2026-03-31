@@ -39,7 +39,26 @@ npm run dev
 
 Setelah itu buka URL lokal yang ditampilkan Vite (umumnya `http://localhost:5173`).
 
+## Environment Variables
+
+1. Copy template:
+
+```bash
+# Windows (PowerShell)
+Copy-Item .env.example .env
+
+# macOS/Linux
+cp .env.example .env
+```
+
+2. Sesuaikan nilainya:
+
+- `DB_HOST`, `DB_NAME`, `DB_USER`, `DB_PASS` untuk koneksi MySQL backend.
+- `VITE_API_BASE_URL` untuk endpoint API backend yang dipakai frontend.
+
+Contoh default sudah tersedia di `.env.example`.
+
 ## Catatan
 
 - File sensitif seperti `.env` tidak ikut ter-commit karena sudah diatur di `.gitignore` root.
-- Jika butuh contoh environment variable, buat file `.env.example`.
+- Template env tersedia di `.env.example`.

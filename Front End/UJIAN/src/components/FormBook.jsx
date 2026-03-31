@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate untuk navigasi
 import Button from "./common/Button";
+import { API_BASE_URL } from "../config";
 
 export const FormBook = () => {
   const [book, setBook] = useState({
@@ -26,7 +27,7 @@ export const FormBook = () => {
     setError(null); // Reset error
 
     try {
-      const res = await fetch("http://localhost:8000/books", {
+      const res = await fetch(`${API_BASE_URL}/books`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

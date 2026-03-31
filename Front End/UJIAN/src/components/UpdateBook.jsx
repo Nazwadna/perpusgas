@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
 export const UpdateBook = () => {
   const { id } = useParams(); // Mengambil ID buku dari parameter URL
@@ -15,7 +16,7 @@ export const UpdateBook = () => {
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/books/${id}`);
+        const res = await axios.get(`${API_BASE_URL}/books/${id}`);
         setBook(res.data);
       } catch (error) {
         console.error("Failed to fetch book data:", error);
@@ -37,7 +38,7 @@ export const UpdateBook = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8000/books/${id}`, book); // API PUT request untuk update data
+      await axios.put(`${API_BASE_URL}/books/${id}`, book); // API PUT request untuk update data
       navigate("/"); // Redirect ke halaman utama setelah berhasil
     } catch (error) {
       console.error("Failed to update book:", error);

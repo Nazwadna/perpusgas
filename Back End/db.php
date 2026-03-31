@@ -1,10 +1,10 @@
 <?php
 
 function getConnection() {
-    $host = "localhost";
-    $db_name = "perpustakaan";
-    $username = "root";
-    $password = "";
+    $host = getenv('DB_HOST') ?: "localhost";
+    $db_name = getenv('DB_NAME') ?: "perpustakaan";
+    $username = getenv('DB_USER') ?: "root";
+    $password = getenv('DB_PASS') ?: "";
 
     $conn = new mysqli($host, $username, $password, $db_name);
 
